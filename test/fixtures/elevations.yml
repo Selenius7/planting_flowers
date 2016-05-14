@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  action_id: 
+  flower_id: 
+  elevation_data: 2016-05-15
+  comment: MyString
+
+two:
+  action_id: 
+  flower_id: 
+  elevation_data: 2016-05-15
+  comment: MyString

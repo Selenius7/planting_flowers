@@ -11,7 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514210417) do
+ActiveRecord::Schema.define(version: 20160514212932) do
+
+  create_table "actions", force: :cascade do |t|
+    t.string   "name",       limit: 20
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string   "first_name", limit: 10
+    t.string   "last_name",  limit: 10
+    t.integer  "phone",      limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "elevations", force: :cascade do |t|
+    t.integer  "action_id",      limit: 4
+    t.integer  "flower_id",      limit: 4
+    t.date     "elevation_data"
+    t.string   "comment",        limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "elevations", ["action_id"], name: "index_elevations_on_action_id", using: :btree
+  add_index "elevations", ["flower_id"], name: "index_elevations_on_flower_id", using: :btree
 
   create_table "flowers", force: :cascade do |t|
     t.string   "f_name",        limit: 20
@@ -32,4 +58,28 @@ ActiveRecord::Schema.define(version: 20160514210417) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "cost",       limit: 4
+    t.integer  "flower_id",  limit: 4
+    t.integer  "client_id",  limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "orders", ["client_id"], name: "index_orders_on_client_id", using: :btree
+  add_index "orders", ["flower_id"], name: "index_orders_on_flower_id", using: :btree
+
+  create_table "results", force: :cascade do |t|
+    t.integer  "flower_id",   limit: 4
+    t.date     "result_date"
+    t.string   "comment",     limit: 200
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_foreign_key "elevations", "actions"
+  add_foreign_key "elevations", "flowers"
+  add_foreign_key "orders", "clients"
+  add_foreign_key "orders", "flowers"
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2016-05-15
+  cost: 1
+  flower_id: 
+  client_id: 
+
+two:
+  date: 2016-05-15
+  cost: 1
+  flower_id: 
+  client_id: 
