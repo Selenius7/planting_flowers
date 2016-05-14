@@ -5,7 +5,6 @@ class CreateClients < ActiveRecord::Migration
       t.string :last_name, limit: 10
       t.integer :phone
 
-      t.timestamps null: false
     end
   end
 end

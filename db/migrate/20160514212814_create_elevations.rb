@@ -6,7 +6,6 @@ class CreateElevations < ActiveRecord::Migration
       t.date :elevation_data
       t.string :comment, limit: 200
 
-      t.timestamps null: false
     end
   end
 end

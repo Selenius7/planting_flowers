@@ -6,7 +6,6 @@ class CreateOrders < ActiveRecord::Migration
       t.references :flower, index: true, foreign_key: true
       t.references :client, index: true, foreign_key: true
 
-      t.timestamps null: false
     end
   end
 end

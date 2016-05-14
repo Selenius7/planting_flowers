@@ -4,7 +4,6 @@ class CreateGardenBeds < ActiveRecord::Migration
       t.integer :num
       t.string :comment, limit: 200
 
-      t.timestamps null: false
     end
   end
 end

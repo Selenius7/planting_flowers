@@ -14,72 +14,56 @@
 ActiveRecord::Schema.define(version: 20160514231838) do
 
   create_table "clients", force: :cascade do |t|
-    t.string   "first_name", limit: 10
-    t.string   "last_name",  limit: 10
-    t.integer  "phone",      limit: 4
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string  "first_name", limit: 10
+    t.string  "last_name",  limit: 10
+    t.integer "phone",      limit: 4
   end
 
   create_table "cultures", force: :cascade do |t|
-    t.string   "name",       limit: 10
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string "name", limit: 10
   end
 
   create_table "deeds", force: :cascade do |t|
-    t.string   "name",       limit: 20
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string "name", limit: 20
   end
 
   create_table "elevations", force: :cascade do |t|
-    t.integer  "deed_id",        limit: 4
-    t.integer  "flower_id",      limit: 4
-    t.date     "elevation_data"
-    t.string   "comment",        limit: 200
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer "deed_id",        limit: 4
+    t.integer "flower_id",      limit: 4
+    t.date    "elevation_data"
+    t.string  "comment",        limit: 200
   end
 
   add_index "elevations", ["deed_id"], name: "index_elevations_on_deed_id", using: :btree
   add_index "elevations", ["flower_id"], name: "index_elevations_on_flower_id", using: :btree
 
   create_table "flowers", force: :cascade do |t|
-    t.string   "f_name",        limit: 20
-    t.integer  "culture_id",    limit: 4
-    t.integer  "cost",          limit: 4
-    t.integer  "garden_bed_id", limit: 4
-    t.date     "planting_date"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string  "f_name",        limit: 20
+    t.integer "culture_id",    limit: 4
+    t.integer "cost",          limit: 4
+    t.integer "garden_bed_id", limit: 4
+    t.date    "planting_date"
   end
 
   create_table "garden_beds", force: :cascade do |t|
-    t.integer  "num",        limit: 4
-    t.string   "comment",    limit: 200
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer "num",     limit: 4
+    t.string  "comment", limit: 200
   end
 
   create_table "orders", force: :cascade do |t|
-    t.date     "date"
-    t.integer  "cost",       limit: 4
-    t.integer  "flower_id",  limit: 4
-    t.integer  "client_id",  limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.date    "date"
+    t.integer "cost",      limit: 4
+    t.integer "flower_id", limit: 4
+    t.integer "client_id", limit: 4
   end
 
   add_index "orders", ["client_id"], name: "index_orders_on_client_id", using: :btree
   add_index "orders", ["flower_id"], name: "index_orders_on_flower_id", using: :btree
 
   create_table "results", force: :cascade do |t|
-    t.integer  "flower_id",   limit: 4
-    t.date     "result_date"
-    t.string   "comment",     limit: 200
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer "flower_id",   limit: 4
+    t.date    "result_date"
+    t.string  "comment",     limit: 200
   end
 
   add_foreign_key "elevations", "deeds"

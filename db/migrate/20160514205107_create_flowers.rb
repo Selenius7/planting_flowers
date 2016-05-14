@@ -7,7 +7,6 @@ class CreateFlowers < ActiveRecord::Migration
       t.references :garden_bed
       t.date :planting_date
 
-      t.timestamps null: false
     end
   end
 end
