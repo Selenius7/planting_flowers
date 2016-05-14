@@ -1,4 +1,4 @@
 class Elevation < ActiveRecord::Base
-  belongs_to :action
+  belongs_to :deed
   belongs_to :flower
 end

@@ -11,13 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514212932) do
-
-  create_table "actions", force: :cascade do |t|
-    t.string   "name",       limit: 20
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-  end
+ActiveRecord::Schema.define(version: 20160514231838) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name", limit: 10
@@ -27,29 +21,39 @@ ActiveRecord::Schema.define(version: 20160514212932) do
     t.datetime "updated_at",            null: false
   end
 
+  create_table "cultures", force: :cascade do |t|
+    t.string   "name",       limit: 10
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "deeds", force: :cascade do |t|
+    t.string   "name",       limit: 20
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
   create_table "elevations", force: :cascade do |t|
-    t.integer  "action_id",      limit: 4
+    t.integer  "deed_id",        limit: 4
     t.integer  "flower_id",      limit: 4
     t.date     "elevation_data"
-    t.string   "comment",        limit: 255
+    t.string   "comment",        limit: 200
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "elevations", ["action_id"], name: "index_elevations_on_action_id", using: :btree
+  add_index "elevations", ["deed_id"], name: "index_elevations_on_deed_id", using: :btree
   add_index "elevations", ["flower_id"], name: "index_elevations_on_flower_id", using: :btree
 
   create_table "flowers", force: :cascade do |t|
     t.string   "f_name",        limit: 20
-    t.string   "culture_name",  limit: 20
+    t.integer  "culture_id",    limit: 4
     t.integer  "cost",          limit: 4
     t.integer  "garden_bed_id", limit: 4
     t.date     "planting_date"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
-
-  add_index "flowers", ["garden_bed_id"], name: "index_flowers_on_garden_bed_id", using: :btree
 
   create_table "garden_beds", force: :cascade do |t|
     t.integer  "num",        limit: 4
@@ -78,7 +82,7 @@ ActiveRecord::Schema.define(version: 20160514212932) do
     t.datetime "updated_at",              null: false
   end
 
-  add_foreign_key "elevations", "actions"
+  add_foreign_key "elevations", "deeds"
   add_foreign_key "elevations", "flowers"
   add_foreign_key "orders", "clients"
   add_foreign_key "orders", "flowers"

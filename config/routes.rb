@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
+  resources :cultures
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   resources :flowers
+  resources :clients
+  resources :orders
+  resources :deeds
+  resources :elevations
+  resources :garden_beds
+  resources :results
+  resources :cultures
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
