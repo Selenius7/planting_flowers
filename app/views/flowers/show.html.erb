@@ -7,11 +7,11 @@
   <dt><strong>Название</strong></dt>
   <dd><%= @flower.f_name %></dd>
   <dt><strong>Название культуры</strong></dt>
-  <dd><%= @flower.culture_name %></dd>
+  <dd><%= @flower.culture.try(:name)%></dd>
   <dt><strong>Цена</strong></dt>
   <dd><%= @flower.cost %></dd>
   <dt><strong>Грядка</strong></dt>
-  <dd><%= @flower.garden_bed_id %></dd>
+  <dd><%= @flower.garden_bed.try(:num) %></dd>
   <dt><strong>Дата посадки</strong></dt>
   <dd><%= @flower.planting_date %></dd>
 </dl>

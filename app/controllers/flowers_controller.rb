@@ -42,6 +42,6 @@ class FlowersController < ApplicationController
   end
 
   def flower_params
-    params.require(:flower).permit(:f_name, :culture_name, :cost, :garden_bed_id, :planting_date)
+    params.require(:flower).permit(:f_name, :culture_id, :cost, :garden_bed_id, :planting_date)
   end
 end

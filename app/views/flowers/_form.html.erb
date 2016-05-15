@@ -22,13 +22,13 @@
     </div>
     <%=f.error_span(:f_name) %>
   </div>
-  <div class="form-group">
-    <%= f.label :culture_name, 'Название культуры',:class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :culture_name, :class => 'form-control' %>
+    <div class="form-group">
+      <%= f.label :garden_bed_id, 'Культура', :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.collection_select :culture_id, Culture.all, :id, :name, {}, {:class => 'selectpicker form-control'} %>
+      </div>
+      <%=f.error_span(:garden_bed_id) %>
     </div>
-    <%=f.error_span(:culture_name) %>
-  </div>
   <div class="form-group">
     <%= f.label :cost, 'Цена', :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
@@ -39,14 +39,14 @@
   <div class="form-group">
     <%= f.label :garden_bed_id, 'Грядка', :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :garden_bed_id, :class => 'form-control' %>
+      <%= f.collection_select :garden_bed_id, GardenBed.all, :id, :num, {}, { :class => 'selectpicker form-control'} %>
     </div>
     <%=f.error_span(:garden_bed_id) %>
   </div>
   <div class="form-group">
     <%= f.label :planting_date, 'Дата посадки', :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :planting_date, :class => 'form-control' %>
+      <%= f.text_field :planting_date, :class => 'datepicker form-control' %>
     </div>
     <%=f.error_span(:planting_date) %>
   </div>

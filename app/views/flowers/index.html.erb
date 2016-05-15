@@ -19,9 +19,9 @@
       <tr>
         <td><%= link_to flower.id, flower_path(flower) %></td>
         <td><%= flower.f_name %></td>
-        <td><%= flower.culture_name %></td>
+        <td><%= flower.culture.try(:name)%></td>
         <td><%= flower.cost %></td>
-        <td><%= flower.garden_bed_id %></td>
+        <td><%= flower.garden_bed.try(:num) %></td>
         <td><%= flower.planting_date %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
