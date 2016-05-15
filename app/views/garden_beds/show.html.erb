@@ -1,0 +1,21 @@
+<%- model_class = GardenBed -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:num) %>:</strong></dt>
+  <dd><%= @garden_bed.num %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:comment) %>:</strong></dt>
+  <dd><%= @garden_bed.comment %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              garden_beds_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_garden_bed_path(@garden_bed), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              garden_bed_path(@garden_bed),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
