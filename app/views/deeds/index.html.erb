@@ -2,6 +2,10 @@
   <h1>Операции</h1>
 </div>
 <%= render 'deeds_grid' %>
+
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_deed_path,
             :class => 'btn btn-primary' %>
+
+<button class="wg-external-csv-export-button btn btn-primary" data-grid-name="deeds">Export To CSV</button>
+
