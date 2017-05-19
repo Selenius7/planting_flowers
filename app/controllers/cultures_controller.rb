@@ -4,7 +4,8 @@ class CulturesController < ApplicationController
   # GET /cultures
   # GET /cultures.json
   def index
-    @cultures = Culture.all
+    @cultures_grid = initialize_grid(Culture, name: 'cultures', enable_export_to_csv: true)
+    export_grid_if_requested
   end
 
   # GET /cultures/1
