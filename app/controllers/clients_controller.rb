@@ -5,7 +5,8 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
     @clients = Client.all
-    @clients_grid = initialize_grid(Client)
+    @clients_grid = initialize_grid(Client, name: 'clients', enable_export_to_csv: true)
+    export_grid_if_requested
   end
 
   # GET /clients/1

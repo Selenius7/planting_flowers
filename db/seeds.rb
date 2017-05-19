@@ -7,10 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 ActiveRecord::Base.transaction do
 
-  c = Client.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-
-  10.times do
-
+  20.times do
+    c = Client.create!(first_name: Faker::Name.first_name.first(10),
+                       last_name: Faker::Name.last_name.first(10),
+                       phone: Faker::PhoneNumber.cell_phone)
   end
-
 end

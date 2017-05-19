@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(version: 20160514231838) do
 
   create_table "clients", force: :cascade do |t|
-    t.string  "first_name", limit: 10
-    t.string  "last_name",  limit: 10
-    t.integer "phone",      limit: 4
+    t.string "first_name", limit: 10
+    t.string "last_name",  limit: 10
+    t.string "phone",      limit: 255
   end
 
   create_table "cultures", force: :cascade do |t|
