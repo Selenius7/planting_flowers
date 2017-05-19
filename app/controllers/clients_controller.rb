@@ -5,6 +5,7 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
     @clients = Client.all
+    @clients_grid = initialize_grid(Client)
   end
 
   # GET /clients/1
