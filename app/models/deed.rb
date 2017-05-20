@@ -7,4 +7,5 @@
 #
 
 class Deed < ActiveRecord::Base
+  has_many :elevations
 end
