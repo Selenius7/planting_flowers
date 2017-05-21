@@ -44,4 +44,10 @@ ActiveRecord::Base.transaction do
     Order.create!(date: Time.at(rand(100..200)/20.0 * Time.now.to_i), cost: rand(1..100),
                  flower_id: Flower.ids.sample, client_id: Client.ids.sample)
   end
+
+  50.times do
+    Result.create!(flower_id: Flower.ids.sample, result_date: Time.at(rand(100..200)/20.0 * Time.now.to_i),
+                   comment: Faker::Lorem.sentence)
+
+  end
 end
