@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
-# Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.3.13', '< 0.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -31,6 +29,7 @@ gem 'quiet_assets', group: :development
 gem 'faker'
 gem "wice_grid", '3.6.0.pre4'
 gem 'font-awesome-sass',  '~> 4.3'
+gem 'pg', group: :production
 
 
 # Use ActiveModel has_secure_password
@@ -43,6 +42,8 @@ gem 'font-awesome-sass',  '~> 4.3'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  # Use mysql as the database for Active Record
+  gem 'mysql2', '>= 0.3.13', '< 0.5'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
