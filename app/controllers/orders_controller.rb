@@ -4,7 +4,8 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders_grid = initialize_grid(Order, name: 'orders', enable_export_to_csv: true)
+    export_grid_if_requested
   end
 
   # GET /orders/1

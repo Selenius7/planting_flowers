@@ -34,20 +34,14 @@ ActiveRecord::Base.transaction do
 
   end
 
-
   1000.times do
     Elevation.create!(deed_id: Deed.ids.sample,
                       flower_id: Flower.ids.sample,
                       comment: Faker::Lorem.sentence)
   end
 
-  # == Schema Information
-  #
-  # Table name: elevations
-  #
-  #  id             :integer          not null, primary key
-  #  deed_id        :integer
-  #  flower_id      :integer
-  #  elevation_data :date
-  #  comment        :string(200)
+  50.times do
+    Order.create!(date: Time.at(rand(100..200)/20.0 * Time.now.to_i), cost: rand(1..100),
+                 flower_id: Flower.ids.sample, client_id: Client.ids.sample)
+  end
 end
