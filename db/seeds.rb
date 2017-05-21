@@ -13,8 +13,12 @@ ActiveRecord::Base.transaction do
                    phone: Faker::PhoneNumber.cell_phone)
   end
 
-  20.times do
+  21.times do
     Culture.create!(name: Faker::Company.name.first(10))
+  end
+
+  21.times do
+    GardenBed.create!(comment: Faker::Lorem.sentence, num: rand(1000))
   end
 
   100.times do
