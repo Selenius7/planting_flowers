@@ -1,0 +1,20 @@
+<%= grid(@clients_grid, show_filters: :when_filtered, hide_csv_button: true) do |g|
+  g.column name: 'Идентификатор', attribute: 'id'
+  g.column name: 'Имя', attribute: 'first_name'
+  g.column name: 'Фамилия', attribute: 'last_name'
+  g.column name: 'Телефон', attribute: 'phone'
+
+  g.column(in_csv: false) do |client|
+    link_to t('.edit', :default => t("helpers.links.edit")),
+            edit_client_path(client), :class => 'btn btn-default btn-xs'
+  end
+
+  g.column(in_csv: false) do|client|
+    link_to t('.destroy', :default => t("helpers.links.destroy")),
+            client_path(client),
+            :method => :delete,
+            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+            :class => 'btn btn-xs btn-danger'
+  end
+end -%>
+

@@ -4,7 +4,8 @@ class GardenBedsController < ApplicationController
   # GET /garden_beds
   # GET /garden_beds.json
   def index
-    @garden_beds = GardenBed.all
+    @garden_beds_grid = initialize_grid(GardenBed, name: 'garden_beds', enable_export_to_csv: true)
+    export_grid_if_requested
   end
 
   # GET /garden_beds/1

@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: liasun
+  password: root
   socket: /var/run/mysqld/mysqld.sock
 
 development:
@@ -49,6 +49,8 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  encoding: utf8
+  username: postgres
+  password: postgres
   database: planting_flowers_production
-  username: planting_flowers
-  password: <%= ENV['PLANTING_FLOWERS_DATABASE_PASSWORD'] %>

@@ -4,7 +4,8 @@ class ResultsController < ApplicationController
   # GET /results
   # GET /results.json
   def index
-    @results = Result.all
+    @results_grid = initialize_grid(Result, name: 'results', enable_export_to_csv: true)
+    export_grid_if_requested
   end
 
   # GET /results/1

@@ -2,7 +2,8 @@ class FlowersController < ApplicationController
   before_filter :find_flower, only: [:show, :edit, :update, :destroy]
 
   def index
-    @flowers = Flower.all
+    @flowers_grid = initialize_grid(Flower, include: [:culture, :garden_bed], name: 'flowers', enable_export_to_csv: true)
+    export_grid_if_requested
   end
 
   def new

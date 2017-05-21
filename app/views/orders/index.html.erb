@@ -1,40 +1,11 @@
-<%- model_class = Order -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>Заказы</h1>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th>Дата</th>
-      <th>Цена</th>
-      <th>Цветок</th>
-      <th>Клиент</th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= link_to order.id, order_path(order) %></td>
-        <td><%= order.date %></td>
-        <td><%= order.cost %></td>
-        <td><%= order.flower.try(:f_name) %></td>
-        <td><%= order.client.try(:full_name)%></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_order_path(order), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      order_path(order),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<%= render 'orders_grid' %>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_order_path,
             :class => 'btn btn-primary' %>
+
+<button class="wg-external-csv-export-button btn btn-primary" data-grid-name="orders">Экспорт в CSV</button>

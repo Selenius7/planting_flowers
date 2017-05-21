@@ -4,7 +4,8 @@ class DeedsController < ApplicationController
   # GET /deeds
   # GET /deeds.json
   def index
-    @deeds = Deed.all
+    @deeds_grid = initialize_grid(Deed, name: 'deeds', enable_export_to_csv: true)
+    export_grid_if_requested
   end
 
   # GET /deeds/1

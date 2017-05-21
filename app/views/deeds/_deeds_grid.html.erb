@@ -1,0 +1,18 @@
+<%= grid(@deeds_grid, show_filters: :when_filtered, hide_csv_button: true) do |g|
+  g.column name: 'Идентификатор', attribute: 'id'
+  g.column name: 'Имя', attribute: 'name'
+
+
+  g.column(in_csv: false) do |deed|
+    link_to t('.edit', :default => t("helpers.links.edit")),
+            edit_deed_path(deed), :class => 'btn btn-default btn-xs'
+  end
+
+  g.column(in_csv: false) do|deed|
+    link_to t('.destroy', :default => t("helpers.links.destroy")),
+            deed_path(deed),
+            :method => :delete,
+            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },
+            :class => 'btn btn-xs btn-danger'
+  end
+end -%>

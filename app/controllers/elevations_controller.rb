@@ -4,7 +4,8 @@ class ElevationsController < ApplicationController
   # GET /elevations
   # GET /elevations.json
   def index
-    @elevations = Elevation.all
+    @elevations_grid = initialize_grid(Elevation, include: :deed, name: 'elevations', enable_export_to_csv: true)
+    export_grid_if_requested
   end
 
   # GET /elevations/1
