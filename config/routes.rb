@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :garden_beds
   resources :results
   resources :cultures
+  resources :charts, only: [:index]
 
   # You can have the root of your site routed with "root"
   root 'flowers#index'
