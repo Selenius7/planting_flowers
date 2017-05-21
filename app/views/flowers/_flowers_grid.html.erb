@@ -1,0 +1,21 @@
+<%= grid(@flowers_grid, show_filters: :when_filtered, hide_csv_button: true) do |g|
+  g.column name: 'Идентификатор', attribute: 'id'
+  g.column name: 'Имя', attribute: 'f_name'
+  g.column name: 'Культура', attribute: 'name', assoc: :culture
+  g.column name: 'Грядка', attribute: 'num', assoc: :garden_bed
+  g.column name: 'Стоимость', attribute: 'cost'
+  g.column name: 'Дата посадки', attribute: 'planting_date', filter_type: :string
+
+  g.column(in_csv: false) do |elevation|
+    link_to t('.edit', :default => t("helpers.links.edit")),
+            edit_flower_path(elevation), :class => 'btn btn-default btn-xs'
+  end
+
+  g.column(in_csv: false) do|elevation|
+    link_to t('.destroy', :default => t("helpers.links.destroy")),
+            flower_path(elevation),
+            :method => :delete,
+            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },
+            :class => 'btn btn-xs btn-danger'
+  end
+end -%>

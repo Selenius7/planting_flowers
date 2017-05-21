@@ -24,4 +24,30 @@ ActiveRecord::Base.transaction do
   100.times do
     Deed.create!(name: Faker::Lorem.characters(20))
   end
+
+  300.times do
+    Flower.create!(f_name: Faker::Name.first_name.first(20),
+                   culture_id: Culture.ids.sample,
+                   cost: rand(100),
+                   planting_date: Time.at(rand(100..200)/20.0 * Time.now.to_i),
+                   garden_bed_id: GardenBed.ids.sample)
+
+  end
+
+
+  1000.times do
+    Elevation.create!(deed_id: Deed.ids.sample,
+                      flower_id: Flower.ids.sample,
+                      comment: Faker::Lorem.sentence)
+  end
+
+  # == Schema Information
+  #
+  # Table name: elevations
+  #
+  #  id             :integer          not null, primary key
+  #  deed_id        :integer
+  #  flower_id      :integer
+  #  elevation_data :date
+  #  comment        :string(200)
 end
