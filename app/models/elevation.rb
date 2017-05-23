@@ -7,9 +7,12 @@
 #  flower_id      :integer
 #  elevation_data :date
 #  comment        :string(200)
+#  note_id        :integer
 #
 
 class Elevation < ActiveRecord::Base
+  include Notable
+
   belongs_to :deed
   belongs_to :flower
 

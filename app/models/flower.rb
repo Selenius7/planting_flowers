@@ -8,9 +8,12 @@
 #  cost          :integer
 #  garden_bed_id :integer
 #  planting_date :date
+#  note_id       :integer
 #
 
 class Flower < ActiveRecord::Base
+  include Notable
+
   belongs_to :culture
   belongs_to :garden_bed
 end
