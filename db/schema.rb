@@ -89,6 +89,8 @@ ActiveRecord::Schema.define(version: 20170523224157) do
     t.string  "comment",     limit: 200
   end
 
+  add_index "results", ["flower_id"], name: "index_results_on_flower_id", using: :btree
+
   add_foreign_key "clients", "notes"
   add_foreign_key "cultures", "notes"
   add_foreign_key "elevations", "deeds"
@@ -99,4 +101,5 @@ ActiveRecord::Schema.define(version: 20170523224157) do
   add_foreign_key "orders", "clients"
   add_foreign_key "orders", "flowers"
   add_foreign_key "orders", "notes"
+  add_foreign_key "results", "flowers"
 end
