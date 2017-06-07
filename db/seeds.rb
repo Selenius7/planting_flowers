@@ -22,7 +22,7 @@ ActiveRecord::Base.transaction do
   end
 
   100.times do
-    Deed.create!(name: Faker::Lorem.characters(20))
+    Deed.create!(name: Faker::Lorem.characters(20), cost: rand(0..10))
   end
 
   300.times do

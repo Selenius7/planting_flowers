@@ -20,6 +20,11 @@
     <div class="col-lg-10">
       <%= f.text_field :name, :class => 'form-control' %>
     </div>
+
+    <%= f.label :cost, 'Цена' ,:class => 'control-label col-lg-2' %>
+    <div style="margin-top: 20px" class="col-lg-2">
+      <%= f.number_field :cost, :class => 'form-control' %>
+    </div>
     <%=f.error_span(:name) %>
   </div>
 

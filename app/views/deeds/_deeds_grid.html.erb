@@ -1,6 +1,7 @@
 <%= grid(@deeds_grid, show_filters: :when_filtered, hide_csv_button: true) do |g|
   g.column name: 'Идентификатор', attribute: 'id'
   g.column name: 'Имя', attribute: 'name'
+  g.column name: 'Цена', attribute: 'cost'
 
 
   g.column(in_csv: false) do |deed|

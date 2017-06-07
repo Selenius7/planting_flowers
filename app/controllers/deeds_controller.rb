@@ -70,6 +70,6 @@ class DeedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deed_params
-      params.fetch(:deed, {}).permit(:id, :name)
+      params.fetch(:deed, {}).permit(:id, :name, :cost)
     end
 end

@@ -16,4 +16,13 @@ class Flower < ActiveRecord::Base
 
   belongs_to :culture
   belongs_to :garden_bed
+
+  before_save :ensure_cost
+
+  private
+
+  def ensure_cost
+    self.cost = 0 unless cost
+    true
+  end
 end

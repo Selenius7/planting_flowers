@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523224157) do
+ActiveRecord::Schema.define(version: 20170607213422) do
 
   create_table "clients", force: :cascade do |t|
     t.string  "first_name", limit: 10
@@ -30,7 +30,8 @@ ActiveRecord::Schema.define(version: 20170523224157) do
   add_index "cultures", ["note_id"], name: "index_cultures_on_note_id", using: :btree
 
   create_table "deeds", force: :cascade do |t|
-    t.string "name", limit: 20
+    t.string  "name", limit: 20
+    t.integer "cost", limit: 4,  default: 0, null: false
   end
 
   create_table "elevations", force: :cascade do |t|
