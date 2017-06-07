@@ -50,4 +50,9 @@ ActiveRecord::Base.transaction do
                    comment: Faker::Lorem.sentence)
 
   end
+
+
+  10.times do
+    Note.create!(data_of_the_result: Time.at(rand(100..200)/20.0 * Time.now.to_i), note: Faker::Company.name)
+  end
 end
