@@ -16,6 +16,8 @@ class Flower < ActiveRecord::Base
 
   belongs_to :culture
   belongs_to :garden_bed
+  has_many :elevations, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   before_save :ensure_cost
 
