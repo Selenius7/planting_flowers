@@ -1,6 +1,6 @@
 class ChartsController < ApplicationController
   def index
     @order_data = Order.all
-    @elevation_data = Elevation.all
+    @flower_data = Flower.all
   end
 end

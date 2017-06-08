@@ -1,3 +1,5 @@
+require 'flowers_parser'
+
 class FlowersController < ApplicationController
   before_filter :find_flower, only: [:show, :edit, :update, :destroy]
 
@@ -33,6 +35,14 @@ class FlowersController < ApplicationController
 
   def destroy
     @flower.destroy
+    redirect_to flowers_path
+  end
+
+  def import
+  end
+
+  def import_complete
+    FlowersParser.new(file: params[:file].tempfile).parse
     redirect_to flowers_path
   end
 

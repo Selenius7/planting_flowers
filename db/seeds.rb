@@ -22,7 +22,7 @@ ActiveRecord::Base.transaction do
   end
 
   100.times do
-    Deed.create!(name: Faker::Lorem.characters(20))
+    Deed.create!(name: Faker::Lorem.characters(20), cost: rand(0..10))
   end
 
   300.times do
@@ -49,5 +49,10 @@ ActiveRecord::Base.transaction do
     Result.create!(flower_id: Flower.ids.sample, result_date: Time.at(rand(100..200)/20.0 * Time.now.to_i),
                    comment: Faker::Lorem.sentence)
 
+  end
+
+
+  10.times do
+    Note.create!(data_of_the_result: Time.at(rand(100..200)/20.0 * Time.now.to_i), note: Faker::Company.name)
   end
 end

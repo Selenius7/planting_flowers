@@ -1,0 +1,15 @@
+<div class="row">
+  <%= form_tag import_complete_flowers_path, multipart: true, class: 'form-inline' do %>
+      <div class="col-xs-12">
+         <div class="form-group">
+           <%= file_field_tag :file, class: '' %>
+         </div>
+      </div>
+
+      <div style="margin-top: 20px" class="col-xs-12">
+        <div class="form-group">
+          <%= submit_tag "Import CSV", class: 'btn btn-info' %>
+        </div>
+      </div>
+  <% end %>
+</div>
