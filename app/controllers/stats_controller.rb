@@ -20,6 +20,6 @@ class StatsController < ApplicationController
           orders o ON o.flower_id = f.id
       GROUP BY c.id;
     SQL
-    @statistics = ActiveRecord::Base.connection.execute(sql).to_a
+    @statistics = ActiveRecord::Base.connection.select_rows(sql).to_a
   end
 end
