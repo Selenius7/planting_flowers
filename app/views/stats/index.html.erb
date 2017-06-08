@@ -1,0 +1,25 @@
+<h4 class="text-center">Статистика</h4>
+
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Культура</th>
+    <th>Продано цветов</th>
+    <th>Всего цветов</th>
+    <th>Доходы, руб</th>
+    <th>Расходы, руб</th>
+    <th>Прибыль, руб</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% @statistics.each do |culture| %>
+        <tr>
+          <% (0..5).to_a.each do |n| %>
+            <td><%= culture[n]%></td>
+          <% end %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
