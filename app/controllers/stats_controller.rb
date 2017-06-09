@@ -3,6 +3,23 @@ class StatsController < ApplicationController
     sql = <<-SQL.squish
     
     SELECT c.name FROM  cultures c  GROUP BY c.id
+
+    SELECT
+     c.name,
+     COUNT(f.id) AS total_flowers
+    FROM   cultures c
+     LEFT OUTER JOIN flowers f ON f.culture_id = c.id
+    GROUP BY c.id;
+
+    SELECT
+     c.name,
+     COUNT(o.flower_id) AS sold_flowers,
+     COUNT(f.id) AS total_flowers
+    FROM   cultures c
+     LEFT OUTER JOIN flowers f ON f.culture_id = c.id
+    LEFT OUTER JOIN orders o ON o.flower_id = f.id GROUP BY c.id;
+    
+    
     
       SELECT 
         c.name,
@@ -26,20 +43,3 @@ class StatsController < ApplicationController
     @statistics = ActiveRecord::Base.connection.select_rows(sql).to_a
   end
 end
-
-SELECT c.name FROM  cultures c  GROUP BY c.id
-
-SELECT
- c.name,
- COUNT(f.id) AS total_flowers
-FROM   cultures c
- LEFT OUTER JOIN flowers f ON f.culture_id = c.id
-GROUP BY c.id;
-
-SELECT
- c.name,
- COUNT(o.flower_id) AS sold_flowers,
- COUNT(f.id) AS total_flowers
-FROM   cultures c
- LEFT OUTER JOIN flowers f ON f.culture_id = c.id
-LEFT OUTER JOIN orders o ON o.flower_id = f.id GROUP BY c.id;
