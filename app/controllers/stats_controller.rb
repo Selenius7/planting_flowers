@@ -1,6 +1,9 @@
 class StatsController < ApplicationController
   def index
     sql = <<-SQL.squish
+    
+    SELECT c.name FROM  cultures c  GROUP BY c.id
+    
       SELECT 
         c.name,
         COUNT(o.flower_id) AS sold_flowers,
